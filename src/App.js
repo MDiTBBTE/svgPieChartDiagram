@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
+import { Diagram } from './pages/Diagram';
+import { Home } from './pages/Home';
+
+export const App = () => {
+  const [ sections, setSections ] = useState([]);
+
+   const handleAddSection = (name, amount, hexColor, prevAmount) => {
+    setSections([...sections, ...[{name, amount, hexColor, prevAmount}]]);
+   };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Switch>
+            <Route exact path="/">
+              <Home handleAddSection={handleAddSection} />
+            </Route>
+            <Route exact path="/diagram">
+              <Diagram sections={sections}/>
+            </Route>
+          </Switch>
+      </Router>
     </div>
-  );
+  )
 }
-
-export default App;

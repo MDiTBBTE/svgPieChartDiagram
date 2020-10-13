@@ -1,0 +1,26 @@
+.wrapper {
+    position: relative;
+    height: 100vh;
+}
+
+.diagram {
+    &_show-diagram-btn {
+        width: 30%;
+        text-transform: uppercase;
+        border: 1px solid  rgb(212, 99, 178);
+        border-radius: 20px;
+        color: #fff;
+        background: rgb(212, 99, 178);
+        outline: none;
+        cursor: pointer;
+        position: absolute;
+        height: 70px;
+        border-radius: 50px;
+        font-size: 24px;
+        top: 85%;
+        left: 50%;
+        transform: translateX(-50%);
+        transition-property: all; 
+        transition-duration: 0.4s;
+    }
+}
